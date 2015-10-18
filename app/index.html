@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Material UI Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if (debug === false) { %>
+    <link type="text/css" rel="stylesheet" media="all" href="css/app.<%= version %>.css"/>
+    <% } %>
+
+    <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .material-icons.md-18 { font-size: 18px; }
+        .material-icons.md-24 { font-size: 24px; }
+        .material-icons.md-36 { font-size: 36px; }
+        .material-icons.md-48 { font-size: 48px; }
+
+        .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+        .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+        .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+        .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+
+<body>
+<div id="app"></div>
+<script src="js/app.<%= version %>.js"></script>
+</body>
+
+</html>
