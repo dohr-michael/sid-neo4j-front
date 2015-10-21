@@ -1,19 +1,19 @@
-var path = require('path');
-var util = require('util');
-var autoprefixer = require('autoprefixer');
-var pkg = require('../package.json');
-var loaders = require('./loaders');
-var plugins = require('./plugins');
+var path = require ( 'path' );
+var util = require ( 'util' );
+var autoprefixer = require ( 'autoprefixer' );
+var pkg = require ( '../package.json' );
+var loaders = require ( './loaders' );
+var plugins = require ( './plugins' );
 
 var DEBUG = process.env.NODE_ENV === 'development';
 
-var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
+var jsBundle = path.join( 'js', util.format( '[name].%s.js', pkg.version ) );
 
 var entry = {
-    app: ['./app.jsx']
+    app: [ './app.jsx' ]
 };
 
-if (DEBUG) {
+if ( DEBUG ) {
     entry.app.push(
         util.format(
             'webpack-dev-server/client?http://%s:%d',
@@ -21,18 +21,18 @@ if (DEBUG) {
             pkg.config.devPort
         )
     );
-    entry.app.push('webpack/hot/dev-server');
+    entry.app.push( 'webpack/hot/dev-server' );
 }
 
 var config = {
-    context: path.join(__dirname, '../app'),
+    context: path.join( __dirname, '../app' ),
     cache: DEBUG,
     debug: DEBUG,
     entry: entry,
     target: 'web',
     devtool: DEBUG ? 'inline-source-map' : false,
     output: {
-        path: path.resolve(pkg.config.buildDir),
+        path: path.resolve( pkg.config.buildDir ),
         publicPath: '/',
         filename: jsBundle,
         pathinfo: false
@@ -44,16 +44,16 @@ var config = {
         autoprefixer
     ],
     resolve: {
-        root: path.join(__dirname, '../app'),
-        extensions: ['', '.js', '.json', '.jsx']
+        root: path.join( __dirname, '../app' ),
+        extensions: [ '', '.js', '.json', '.jsx' ]
     },
     plugins: plugins,
     devServer: {
-        contentBase: path.resolve(pkg.config.buildDir),
+        contentBase: path.resolve( pkg.config.buildDir ),
         hot: true,
         noInfo: false,
         inline: true,
-        stats: {colors: true}
+        stats: { colors: true }
     }
 };
 

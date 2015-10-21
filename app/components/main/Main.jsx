@@ -1,7 +1,9 @@
-import React                 from 'react';
-import { appRoute }          from 'tools/annotations';
+import React                                from 'react';
 
-import styles                from 'components/main/Main.scss';
+import { appRoute }                         from 'toolkit/annotations';
+import styles                               from 'components/main/Main.scss';
+
+import NavigationLayout                     from 'toolkit/layouts/NavigationLayout';
 
 
 @appRoute( '/' )
@@ -9,13 +11,9 @@ export default class Main extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Title</h1>
+            <NavigationLayout title="SID - Neo4j">
                 { this.props.children }
-                <div>
-                    <span>Footer</span>
-                </div>
-            </div>
+            </NavigationLayout>
         )
     }
 }

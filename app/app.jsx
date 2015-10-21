@@ -1,18 +1,23 @@
-import './favicon.ico';
-import './index.html';
 import 'babel-core/polyfill';
 import 'normalize.css/normalize.css';
+// import 'material-design-lite/dist/material.js';
+// import 'material-design-lite/dist/material.css';
+// import 'material-design-lite/dist/material-grid.css';
+
+import './favicon.ico';
+import './index.html';
 import './scss/app.scss';
 
 import React                             from 'react';
 import { Router, Route, IndexRoute }     from 'react-router'
 import { render }                        from 'react-dom'
 import injectTapEventPlugin              from 'react-tap-event-plugin';
-import { appRoute }                      from 'tools/annotations'
+import { appRoute }                      from 'toolkit/annotations'
 
 
 import Main                              from 'components/main/Main';
 import Home                              from 'components/home/Home';
+import Showroom                          from 'components/showroom/Showroom';
 
 //Needed for React Developer Tools
 window.React = React;
@@ -29,7 +34,8 @@ injectTapEventPlugin ();
 render ( (
     <Router>
         <Route { ...Main }>
-            <IndexRoute component={ Home }/>
+            <IndexRoute component={ Showroom }/>
+            <Route { ...Showroom } />
         </Route>
     </Router>
 ), document.getElementById( 'app' ) );

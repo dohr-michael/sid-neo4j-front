@@ -33,7 +33,7 @@ if (DEBUG) {
     sassParams.push('sourceMap', 'sourceMapContents=true');
     sassLoader = [
         'style-loader',
-        'css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
+        'css-loader?sourceMap&localIndentName=[name]__[local]___[hash:base64:5]', //?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
         'postcss-loader',
         'sass-loader?' + sassParams.join('&')
     ].join('!');
@@ -63,7 +63,7 @@ var loaders = [
         loaders: jsxLoader
     },
     {
-        test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff2?$|\.ttf$/,
+        test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff2?$|\.ttf$|\.otf$|\.eot$/,
         loader: fileLoader
     },
     {
@@ -71,7 +71,12 @@ var loaders = [
         loader: htmlLoader
     },
     {
+        test: /node_modules\/.*\.css$/,
+        loader: 'style-loader!css-loader'
+    },
+    {
         test: /\.css$/,
+        exclude: /node_modules/,
         loader: cssLoader
     },
     {
